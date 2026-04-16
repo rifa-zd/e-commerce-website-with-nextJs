@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins, Roboto } from 'next/font/google'
 import "./globals.css";
 
+import { Rosarivo, Pattaya } from 'next/font/google'
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,6 +30,18 @@ const roboto = Roboto({
   display: 'swap',
 });
 
+const rosarivo = Rosarivo({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-rosarivo',
+})
+
+const pattaya = Pattaya({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-pattaya',
+})
+
 // ${poppins.variable} ${roboto.variable}
 
 export const metadata: Metadata = {
@@ -45,8 +60,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header>Aiza</header>
-        <footer> A footer Inc. All rights reserved</footer>
+        {/* <header>Aiza</header>
+        <footer> A footer Inc. All rights reserved</footer> */}
         {children}</body>
     </html>
   );
