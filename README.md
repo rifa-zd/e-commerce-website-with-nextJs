@@ -14,3 +14,7 @@ npm run dev
     - preset > Nova
 
 
+## Features
+- navbar (responsive)
+
+

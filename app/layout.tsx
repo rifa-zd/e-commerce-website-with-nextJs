@@ -4,6 +4,7 @@ import { Poppins, Roboto } from 'next/font/google'
 import "./globals.css";
 
 import { Rosarivo, Pattaya } from 'next/font/google'
+import Navbar from "@/components/navbar";
 
 
 const geistSans = Geist({
@@ -60,6 +61,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Navbar />
         {/* <header>Aiza</header>
         <footer> A footer Inc. All rights reserved</footer> */}
         {children}</body>
