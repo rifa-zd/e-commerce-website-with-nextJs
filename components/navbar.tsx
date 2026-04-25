@@ -24,15 +24,15 @@ import {
 } from "./ui/dropdown-menu";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [isShopOpen, setIsShopOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const navLinks = [
-    { label: "Shop", href: "/sign-up", hasDropdown: true },
-    { label: "New Arrivals", href: "/new-arrivals" },
+    { label: "Shop", href: "#", hasDropdown: true },
+    { label: "New Arrivals", href: "/sign-up" },
     { label: "Best Sellers", href: "/best-sellers" },
     { label: "Glow-up Sale", href: "/glow-up-sale" },
   ];
@@ -44,15 +44,12 @@ export default function Navbar() {
   );
 
   const cartButton = (
-    <button
-      className="p-2 hover:text-primary transition-colors duration-200 relative"
-      aria-label="Shopping cart"
-    >
+    <Button variant={"icons"}>
       <ShoppingCart size={20} />
       <span className="absolute top-0 -right-1 w-4 h-4 bg-primary text-background text-xs font-semibold rounded-full flex items-center justify-center">
         0
       </span>
-    </button>
+    </Button>
   );
 
   // Focus search input when it opens
@@ -70,13 +67,13 @@ export default function Navbar() {
   const searchBar = (
     <>
       {!isSearchOpen ? (
-        <button
+        <Button
           onClick={() => setIsSearchOpen(true)}
-          className="p-2 hover:text-primary transition-colors duration-200"
-          aria-label="Search"
+          variant={"icons"}
+          size={"icon"}
         >
           <Search size={20} />
-        </button>
+        </Button>
       ) : (
         <form onSubmit={handleSearch} className="w-48 lg:w-56">
           <div className="relative">
@@ -93,16 +90,17 @@ export default function Navbar() {
                 }
               }}
             />
-            <button
-              type="button"
+            <Button
+              variant={"ghost"}
+              size={"xs"}
               onClick={() => {
                 setIsSearchOpen(false);
                 setSearchQuery("");
               }}
-              className="absolute right-3 top-1/2 -translate-y-1/2"
+              className="absolute right-0 top-1/2 -translate-y-1/2"
             >
-              <X size={12} />
-            </button>
+              <X />
+            </Button>
           </div>
         </form>
       )}
@@ -162,22 +160,25 @@ export default function Navbar() {
         </div>
 
         {/* search option with open logic */}
-        <div className="flex items-center gap-6 shrink-0">{searchBar}</div>
 
-        {cartButton}
+        <div className="flex items-center gap-1 shrink-0">
+          {searchBar}
 
-        {/* Avccount */}
-        <div className="flex items-center gap-1 ml-2 text-sm lg:text-base transition-all duration-200 hover:text-primary active:scale-95 shrink-0 group">
-          <User2
-            size={18}
-            className="
-                group-hover:scale-110"
-          />
-          <Link href={"/sign-up"}>Account</Link>
+          {cartButton}
+
+          {/* Avccount */}
+          <div className="flex items-center gap-1 ml-2 text-sm lg:text-base transition-all duration-200 hover:text-primary active:scale-95 shrink-0 group">
+            <User2
+              size={18}
+              className="
+            group-hover:scale-110"
+            />
+            <Link href={"/sign-up"}>Account</Link>
+          </div>
         </div>
       </div>
 
-      {/* Mobile */}
+      {/* ----------------------------Mobile */}
 
       <div className="md:hidden flex items-center justify-between px-4 py-3">
         {logo}
@@ -190,10 +191,10 @@ export default function Navbar() {
 
           <Button
             variant="outline"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setisMenuOpen(!isMenuOpen)}
             className="p-2 hover:opacity-80 rounded-sm transition-opacity duration-200 ml-auto"
           >
-            {isOpen ? (
+            {isMenuOpen ? (
               <X size={20} className="text-foreground" />
             ) : (
               <Menu
@@ -205,21 +206,48 @@ export default function Navbar() {
         </div>
       </div>
 
-      {isOpen && (
+      {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-secondary/50 shadow-lg z-50">
           <div className="flex flex-col divide-y divide-secondary/30">
             {navLinks.map((navlink) => {
-              return (
+              const isShop = navlink.hasDropdown;
+
+              return isShop ? (
+                // Special handling for "Shop" with dropdown
+                <div key={navlink.label}>
+                  <button
+                    onClick={() => setIsShopOpen(!isShopOpen)}
+                    className="px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-secondary/20 hover:text-primary active:bg-secondary/30 flex items-center justify-between w-full"
+                  >
+                    <span className="flex items-center gap-1">
+                      {navlink.label}
+                      <ChevronDown
+                        size={15}
+                        className={isShopOpen ? "rotate-180" : ""}
+                      />
+                    </span>
+                  </button>
+                  {isShopOpen && (
+                    <div className="bg-secondary/10">
+                      {categories.map((cat, index) => (
+                        <div
+                          key={index}
+                          className="px-8 py-2 text-sm text-primary hover:text-foreground hover:bg-secondary/20 cursor-pointer"
+                        >
+                          {cat.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
                 <Link
                   key={navlink.label}
                   href={navlink.href}
                   className="px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-secondary/20 hover:text-primary active:bg-secondary/30 flex items-center justify-between"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setisMenuOpen(false)}
                 >
-                  <span className="flex items-center gap-1">
-                    {navlink.label}{" "}
-                    {navlink.hasDropdown && <ChevronDown size={15} />}
-                  </span>
+                  {navlink.label}
                 </Link>
               );
             })}

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Knewave, Inter } from 'next/font/google'
 import "./globals.css";
+import Provider from "@/components/fixPage/provider";
 
-import Navbar from "@/components/navbar";
+// import Navbar from "@/components/navbar";
 
 
 const geistSans = Geist({
@@ -46,9 +47,16 @@ export default function RootLayout({
       className={`${inter.variable} ${knewave.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
         
-        {children}</body>
+        {/* <Navbar /> */}
+
+        <Provider>
+
+          {children}
+
+        </Provider>
+        
+        </body>
     </html>
   );
 }
