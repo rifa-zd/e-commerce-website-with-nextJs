@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import AppContextProvider from "../Context/appContext";
 import Navbar from "../navbar";
+import Footer from "../footer";
 
 export default function Provider({ children }: { children: ReactNode }) {
   return (
@@ -10,6 +11,7 @@ export default function Provider({ children }: { children: ReactNode }) {
     {/* each componenet will be rendered inside here
     now for each component we can access context */}
     <Navbar />
-    {children} 
+    {children}
+    <Footer />
     </AppContextProvider>)
 }

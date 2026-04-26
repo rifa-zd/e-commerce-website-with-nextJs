@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+
 import { dummyProductType, useAppContext } from "../Context/appContext";
 import Item from "./item";
 
@@ -36,10 +37,10 @@ export default function NewArrivals() {
 
       {/* Container */}
       <Carousel className="w-full">
-        <CarouselContent className="ml-2.5">
+        <CarouselContent className="-ml-2.5">
           {newArrivals.map((product) => {
             return(
-                <CarouselItem key={product.id} className="pl-5 sm:basis-1/2 md:basis-1.3 lg:basis-1/5">
+                <CarouselItem key={product.id} className="pl-5 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                     <Item product={product}/>
                 </CarouselItem>
 

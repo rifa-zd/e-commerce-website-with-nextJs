@@ -23,6 +23,7 @@ export type dummyProductType = {
 
 type AppContextType = {
   products: dummyProductType[];
+  currency: string;
   subtotal: number;
   setSubTotal: React.Dispatch<React.SetStateAction<number>>;
   totalAmount: number;
