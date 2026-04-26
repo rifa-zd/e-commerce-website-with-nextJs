@@ -7,9 +7,13 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import { useAppContext } from "../Context/appContext";
 
 export default function Carousol() {
   const IMAGE_BASE = "/product/images/";
+
+  // const { router } = useAppContext()
+
   const slides = [
     {
       headline: "Your Premier Women's Fashion Hub",

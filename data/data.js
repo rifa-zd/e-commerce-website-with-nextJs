@@ -9,32 +9,10 @@ export const categories = [
 
 export const dummyProducts = [
   {
-    id: "1",
-    name: "Minimalist Matte Rings",
-    description: "A set of contemporary black bands for a bold, modern look.",
-    price: 25,
-    offerPrice: 18,
-    images: ["/product/images/size1.png"],
-    categories: ["Accessories", "Women"],
-    color: "Black",
-    date: 1716634341000,
-    popular: true,
-  },
-  {
-    id: "2",
-    name: "Hydrating Facial Serum",
-    description: "Deeply nourishing serum with botanical extracts for glowing skin.",
-    price: 45,
-    images: ["/product/images/size2.jpg"],
-    categories: ["Skin Care", "Women"],
-    color: "White",
-    date: 1716634342000,
-    popular: false,
-  },
-  {
     id: "3",
     name: "Cotton Utility Jumpsuit",
-    description: "Breathable olive green jumpsuit with a cinched waist and relaxed fit.",
+    description:
+      "Breathable olive green jumpsuit with a cinched waist and relaxed fit.",
     price: 85,
     offerPrice: 65,
     images: ["/product/images/size3.jpg"],
@@ -44,9 +22,22 @@ export const dummyProducts = [
     popular: true,
   },
   {
+    id: "2",
+    name: "Hydrating Facial Serum",
+    description:
+      "Deeply nourishing serum with botanical extracts for glowing skin.",
+    price: 45,
+    images: ["/product/images/size2.jpg"],
+    categories: ["Skin Care", "Women"],
+    color: "White",
+    date: 1716634342000,
+    popular: false,
+  },
+  {
     id: "4",
     name: "Woven Evening Clutch",
-    description: "Intricately woven leather handbag with a gold-tone chain strap.",
+    description:
+      "Intricately woven leather handbag with a gold-tone chain strap.",
     price: 110,
     images: ["/product/images/size4.jpg"],
     categories: ["Handbags & Shoes", "Women"],
@@ -57,7 +48,8 @@ export const dummyProducts = [
   {
     id: "5",
     name: "Classic Matte Lipstick",
-    description: "Highly pigmented red lipstick with a smooth, long-lasting finish.",
+    description:
+      "Highly pigmented red lipstick with a smooth, long-lasting finish.",
     price: 22,
     offerPrice: 15,
     images: ["/product/images/size5.jpg"],
@@ -92,7 +84,8 @@ export const dummyProducts = [
   {
     id: "8",
     name: "Bohemian Trench Coat",
-    description: "Stylish lightweight coat featuring intricate embroidery details.",
+    description:
+      "Stylish lightweight coat featuring intricate embroidery details.",
     price: 140,
     images: ["/product/images/tall1.png"],
     categories: ["Clothing", "Women"],
@@ -110,6 +103,18 @@ export const dummyProducts = [
     categories: ["Cosmetics", "Women"],
     color: "Rose Gold",
     date: 1716634349000,
+    popular: true,
+  },
+  {
+    id: "1",
+    name: "Minimalist Matte Rings",
+    description: "A set of contemporary black bands for a bold, modern look.",
+    price: 25,
+    offerPrice: 18,
+    images: ["/product/images/size1.png"],
+    categories: ["Accessories", "Women"],
+    color: "Black",
+    date: 1716634341000,
     popular: true,
   },
   {
@@ -191,5 +196,5 @@ export const dummyProducts = [
     color: "Gold",
     date: 1716634356000,
     popular: false,
-  }
+  },
 ];

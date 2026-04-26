@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Title from "./title";
+import Item from "./item";
 import {
   Carousel,
   CarouselContent,
@@ -12,7 +13,6 @@ import {
 
 
 import { dummyProductType, useAppContext } from "../Context/appContext";
-import Item from "./item";
 
 export default function NewArrivals() {
   const { products } = useAppContext();
@@ -20,11 +20,10 @@ export default function NewArrivals() {
 
   useEffect(() => {
     const data = products.slice(0, 7);
-    console.log(data);
+    // console.log(data);
     setTimeout(() => setnewArrivals(data), 0);
     // setnewArrivals(data)
-  }, [products]);
-  // }, [products]) // whenever products change this function will run again
+  }, [products]); // whenever products change this function will run again
 
   return (
     <section className="mx-auto max-w-475 px-4 lg:px-12 pt-16">
@@ -37,16 +36,15 @@ export default function NewArrivals() {
 
       {/* Container */}
       <Carousel className="w-full">
-        <CarouselContent className="-ml-2.5">
+        <CarouselContent className="m-6">
           {newArrivals.map((product) => {
             return(
-                <CarouselItem key={product.id} className="pl-5 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                <CarouselItem key={product.id} className="pl-5 basis-[50%]sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                     <Item product={product}/>
                 </CarouselItem>
-
             )
           })}
-          
+
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
