@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 
 
-import { dummyProductType, useAppContext } from "../Context/appContext";
+import { dummyProductType, useAppContext } from "@/context/AppContext";
 
 export default function NewArrivals() {
   const { products } = useAppContext();

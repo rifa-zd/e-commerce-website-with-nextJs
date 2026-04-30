@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "./title";
 import Item from "./item";
-import { dummyProductType, useAppContext } from "../Context/appContext";
+import { dummyProductType, useAppContext } from "@/context/AppContext";
 
 export default function PopularProducts() {
   const {products} = useAppContext();

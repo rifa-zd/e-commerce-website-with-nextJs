@@ -1,5 +1,6 @@
-import Carousol_Hero from "@/components/fixPage/hero_carousel";
-import HeroSection from "@/components/homePage/hero_section";
+import Hero_Cosmetics from "@/components/hero-section/cosmetics";
+import Hero_Skincare from "@/components/hero-section/skinCare";
+import HeroSection from "@/components/hero-section/homePage";
 import { TrustedBrands } from "@/components/fixPage/trustedBand";
 import NewArrivals from "@/components/fixPage/newArrivals";
 import PopularProducts from "@/components/fixPage/popularProducts";
@@ -11,9 +12,9 @@ export default function Home() {
 
   return (
     <>
-    {/* <HeroSection /> */}
-    <Carousol_Hero />
+    <HeroSection />
     <TrustedBrands />
+    
     <NewArrivals />
     <PopularProducts />
     <Banner />

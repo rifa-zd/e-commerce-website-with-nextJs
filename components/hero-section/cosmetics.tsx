@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Carousel,
@@ -9,29 +9,47 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
-import { useAppContext } from "../Context/appContext";
+import { useAppContext } from "@/context/AppContext";
+import { IMAGE_BASE } from "@/data/data";
 
-export default function Carousol_Hero() {
-  const IMAGE_BASE = "/product/images/";
+export default function CosmeticsHero() {
+  const { router } = useAppContext();
 
-  const { router } = useAppContext()
+  // const slides = [
+  //   {
+  //     headline: "Your Premier Women's Fashion Hub",
+  //     subheadline: "Curated routines for your skin, your way.",
+  //     image: `${IMAGE_BASE}skin_carousel2.jpg`,
+  //     position: "center 30%",
+  //   },
+  //   {
+  //     headline: "Elegance in Every Stitch",
+  //     subheadline: "Discover products made for the modern woman.",
+  //     image: `${IMAGE_BASE}skin_carousel1.jpg`,
+  //     position: "center",
+  //   },
+  // ];
 
   const slides = [
     {
-      headline: "Your Premier Women's Fashion Hub",
-      subheadline: "Style for every occasion",
-      image: `${IMAGE_BASE}Cosmetics.png`,
+      tag: "Skin Care & Wellness",
+      headline: "Glow from",
+      highlight: "Within",
+      subheadline: "Curated routines for your skin, your way.",
+      image: `${IMAGE_BASE}skin_carousel1.jpg`,
     },
     {
-      headline: "Elegance in Every Stitch",
-      subheadline: "Curated collections built to inspire",
-      image: `${IMAGE_BASE}Skin-care.png`,
+      tag: "New Arrivals",
+      headline: "Beauty is",
+      highlight: "Self Care",
+      subheadline: "Discover products made for the modern woman.",
+      image: `${IMAGE_BASE}skin_carousel2.jpg`,
     },
   ];
 
   return (
     <div className="mx-auto px-4 lg:px-12 pt-2">
-      <Carousel>
+      <Carousel opts={{ align: "start", loop: true }} className="w-full">
         <CarouselContent className="gap-4 pl-5">
           {slides.map((slide, index) => {
             return (
@@ -39,8 +57,9 @@ export default function Carousol_Hero() {
                 key={index}
                 style={{
                   backgroundImage: `url(${slide.image})`,
-                  backgroundSize: "contain",
+                  backgroundSize: "cover",
                   backgroundPosition: "center",
+                  // backgroundPosition: slide.position,
                 }}
                 className="h-screen sm:h-149.75 xl:h-158.25 relative bg-no-repeat rounded-2xl"
               >
@@ -69,7 +88,10 @@ export default function Carousol_Hero() {
                     </span>
                   </div>
 
-                  <Button onClick= {() => router.push('/routes/Collection')} className="py-6 sm:py-8 w-44 sm:w-56 font-semibold sm:text-lg rounded-none mt-8 flex items-center gap-2">
+                  <Button
+                    onClick={() => router.push("/routes/Collection")}
+                    className="py-6 sm:py-8 w-44 sm:w-56 font-semibold sm:text-lg rounded-none mt-8 flex items-center gap-2"
+                  >
                     Join Today{" "}
                     <MoveRight
                       style={{ width: "26px", height: "26px" }}

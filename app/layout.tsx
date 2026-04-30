@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Knewave, Inter } from 'next/font/google'
+import { Knewave, Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import Provider from "@/components/fixPage/provider";
-
-// import Navbar from "@/components/navbar";
-
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { AppContextProvider } from "@/context/AppContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +24,10 @@ const geistMono = Geist_Mono({
 const knewave = Knewave({
   variable: "--font-knewave",
   subsets: ["latin"],
-  weight: ["400"]
+  weight: ["400"],
 });
 
-
-// ${poppins.variable} ${roboto.variable}
+const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata: Metadata = {
   title: "Aiza - ecommerce site",
@@ -45,18 +43,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${knewave.variable} h-full antialiased`}
+      // className={`${outfit.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        
-        {/* <Navbar /> */}
 
-        <Provider>
+ {/* each componenet will be rendered inside here
+//     now for each component we can access context */}
 
-          {children}
-
-        </Provider>
-        
-        </body>
+        <AppContextProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </AppContextProvider>
+      </body>
     </html>
   );
 }

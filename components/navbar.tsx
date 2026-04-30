@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useEffect, useRef, useState } from "react";
-import { categories } from "../data/data";
+import { categories } from "@/data/data";
 
 import {
   DropdownMenu,
@@ -23,7 +23,11 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+import { useAppContext } from "@/context/AppContext";
+
 export default function Navbar() {
+  const { router } = useAppContext();
+
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -117,46 +121,46 @@ export default function Navbar() {
         {/* navlinks */}
         <div className="flex items-center gap-4 lg:gap-6 flex-1 justify-center ml-6">
           {navLinks.map((navlink) => {
-            return (
-              <Link
-                key={navlink.label}
-                href={navlink.href}
-                className="relative group text-foreground"
-              >
-                {/* <ChevronDown size={15} /> */}
-                <span className="flex items-center gap-1">
-                  {navlink.label}{" "}
-                  {navlink.hasDropdown && (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <ChevronDown size={18} className="mt-1" />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className={" text-foreground w-full cursor-pointer"}
-                      >
-                        <DropdownMenuGroup>
-                          <DropdownMenuLabel
-                            className={"font-extrabold text-black"}
-                          >
-                            Categories
-                          </DropdownMenuLabel>
-
-                          <DropdownMenuSeparator />
-
-                          {categories.map((cat, index) => (
-                            <DropdownMenuItem key={index}>
-                              {cat.name}
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  )}
+  if (navlink.hasDropdown) {
+    return (
+      <div key={navlink.label} className="relative group text-foreground">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+        <span className="flex items-center gap-1">
+          {navlink.label}
+              <ChevronDown size={18} className="mt-1" />
                 </span>
-                <span className="nav_link_hover"></span>
-              </Link>
-            );
-          })}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="text-foreground w-full cursor-pointer">
+              <DropdownMenuGroup>
+                <DropdownMenuLabel className="font-extrabold text-black">
+                  Categories
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {categories.map((cat, index) => (
+                  <DropdownMenuItem
+                    key={index}
+                    onClick={() => router.push(`/routes/categories/${cat.slug}`)}
+                    className="cursor-pointer"
+                  >
+                    {cat.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        <span className="nav_link_hover"></span>
+      </div>
+    );
+  }
+
+  return (
+    <Link key={navlink.label} href={navlink.href} className="relative group text-foreground">
+      <span>{navlink.label}</span>
+      <span className="nav_link_hover"></span>
+    </Link>
+  );
+})}
         </div>
 
         {/* search option with open logic */}
@@ -232,6 +236,10 @@ export default function Navbar() {
                       {categories.map((cat, index) => (
                         <div
                           key={index}
+                          onClick={() => {
+                            router.push(`/routes/categories/${cat.slug}`);
+                            setisMenuOpen(false);
+                          }}
                           className="px-8 py-2 text-sm text-primary hover:text-foreground hover:bg-secondary/20 cursor-pointer"
                         >
                           {cat.name}

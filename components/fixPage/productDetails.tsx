@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { dummyProductType, useAppContext } from "../Context/appContext";
+import { dummyProductType, useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { Button } from "../ui/button";
@@ -17,13 +17,14 @@ export default function ProductDetails({
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex flex-col items-center gap-7 md:flex-row">
+    <div className="flex flex-col items-center gap-7 md:flex-row ">
       <Image
         src={product.images[0]}
         alt="can't find"
         height={255}
         width={255}
         className="object-cover rounded-lg"
+        style={{ width: "255px", height: "255px" }}
         unoptimized={true}
       />
 

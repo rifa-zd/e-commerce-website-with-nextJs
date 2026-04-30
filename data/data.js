@@ -1,11 +1,14 @@
 export const categories = [
-  { id: 1, name: "Skin care" },
-  { id: 2, name: "Cosmetics" },
-  { id: 3, name: "Clothing" },
-  { id: 4, name: "Handbags & Shoes" },
-  { id: 5, name: "Accesories" },
-  { id: 6, name: "Mom Care" },
-];
+  { id: 1, name: "Skin care", slug: "skin-care" },
+  { id: 2, name: "Cosmetics", slug: "cosmetics" },
+  { id: 3, name: "Clothing", slug: "clothing" },
+  { id: 4, name: "Handbags & Shoes", slug: "handbags-shoes" },
+  { id: 5, name: "Accessories", slug: "accessories" },
+  { id: 6, name: "Mom Care", slug: "mom-care" },
+]
+
+export const IMAGE_BASE = "/product/images/";
+
 
 export const dummyProducts = [
   {

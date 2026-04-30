@@ -1,3 +1,5 @@
+'use client'
+
 import { dummyProducts } from "@/data/data";
 import { useRouter } from "next/navigation";
 import {
@@ -37,9 +39,11 @@ export const useAppContext = () => {
   return useContext(AppContext);
 };
 
-const AppContextProvider = ({ children }: { children: ReactNode }) => {
-  const currency = "$";
+export const AppContextProvider = ({ children }: { children: ReactNode }) => {
+  
   const router = useRouter();
+
+  const currency = "$";
 
   const [products, setProducts] = useState<dummyProductType[]>([]);
   const [subtotal, setSubTotal] = useState(0);
@@ -60,17 +64,11 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const value = {
+    currency, router,
     products,
-    currency,
-
-    subtotal,
-    setSubTotal,
-    totalAmount,
-    setTotalAmount,
-    router,
+    subtotal, setSubTotal,
+    totalAmount, setTotalAmount,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
-
-export default AppContextProvider;

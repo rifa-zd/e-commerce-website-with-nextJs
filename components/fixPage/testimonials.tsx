@@ -10,6 +10,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import { IMAGE_BASE } from "@/data/data";
 
 interface Testimonial {
   id: number;
@@ -23,43 +24,51 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    reviewer: "Ava T.",
-    category: "Mom & Baby",
-    quote: "So soft, but size up if between sizes",
-    body: "My 6-month-old lived in this during our beach trip. The linen is actually soft (not scratchy like most), and the bubble shape makes diaper changes a breeze. Only downside: shrank just a bit after washing on cold. I'd order a size up next time.",
-    image: "/product/images/tall1.png",
+    reviewer: "Layla M.",
+    category: "Clothing",
+    quote: "The coat that makes every outfit look intentional",
+    body: "I've been searching for a trench that actually fits well without looking boxy, and this is it. The structure is perfect — I threw it over a simple tee and felt put-together instantly. The fabric holds its shape beautifully and the buttons feel solid. Already planning to buy it in a second color.",
+    image: `${IMAGE_BASE}tall1.png`,
   },
   {
     id: 2,
-    reviewer: "Jess K.",
+    reviewer: "Nora J.",
     category: "Skin Care",
-    quote: "Finally, an eye patch that doesn't crush my lashes",
-    body: "I bought this for migraines and overnight flights. The silk is legit — no tugging on my skin or eyelashes. Adjustable strap actually stays put without slipping. Lavender scent is very faint, which I like. My only wish? A travel pouch included. Still, 10/10 for sleep quality.",
-    image: "/product/images/tall2.png",
+    quote: "These eye patches are genuinely doing something",
+    body: "I was using drugstore patches before and the difference after switching to these is noticeable. After three mornings my under-eyes look less puffy and the dark circles are visibly lighter. They stay put without sliding and don't irritate my sensitive skin. A permanent part of my morning routine now.",
+    image: `${IMAGE_BASE}tall4.png`,
   },
   {
     id: 3,
-    reviewer: "Amira H.",
-    category: "Accessories",
-    quote: "A black shine that screams class",
-    body: "Adjustable. Pretty. Fits my postpartum fingers. Included three sizes. Still wearing them daily. 10/10 for comfort and confidence.",
-    image: "/product/images/tall3.png",
+    reviewer: "Sofia R.",
+    category: "Clothing",
+    quote: "Casual done right — I wear this on repeat",
+    body: "The fit on this crop top is surprisingly flattering — not too tight, not boxy. The ribbed fabric has a nice weight to it and hasn't lost its shape after multiple washes. I styled it with jeans for a day out and got compliments. Simple but exactly what a wardrobe staple should be.",
+    image: `${IMAGE_BASE}tall5.png`,
   },
   {
     id: 4,
-    reviewer: "Priya M.",
-    category: "Wellness",
-    quote: "My nighttime ritual just got an upgrade",
-    body: "I was skeptical at first, but after two weeks I genuinely look forward to winding down. The texture is luxurious, absorbs fast, and doesn't leave residue. My skin has never felt more balanced. Repurchased twice already.",
-    image: "/product/images/tall4.png",
+    reviewer: "Amira H.",
+    category: "Accessories",
+    quote: "Edgy, minimal, and actually stays on",
+    body: "I bought the full set and wear two or three rings stacked daily. The black finish is holding up really well — no fading or peeling after weeks of wear. Fits true to size and the weight feels substantial without being uncomfortable. Exactly the aesthetic I was going for.",
+    image: `${IMAGE_BASE}size1.png`,
   },
   {
     id: 5,
-    reviewer: "Sofia R.",
-    category: "Lifestyle",
-    quote: "Effortlessly elegant — wore it to brunch and got three compliments",
-    body: "It drapes beautifully and the fabric feels premium for the price. I sized down per the guide and it was perfect. The colour IRL is even richer than the photos — a deep, warm tone that pairs with everything.",
-    image: "/product/images/tall5.png",
+    reviewer: "Hana B.",
+    category: "Mom Care",
+    quote: "Softest thing my baby has ever worn",
+    body: "I ordered this for my newborn and the knit quality exceeded my expectations. It's warm but breathable, and the button front makes dressing a wriggly baby so much easier. After four washes it still looks brand new. Every mom in my group has asked where I got it.",
+    image: `${IMAGE_BASE}random6.png`,
+  },
+  {
+    id: 6,
+    reviewer: "Elena V.",
+    category: "Accessories",
+    quote: "Delicate jewelry that looks way more expensive than it is",
+    body: "The pearl drop earrings paired with the layered necklace is such a beautiful combination. Everything feels lightweight and comfortable for all-day wear. I've received so many compliments and nobody believes the price. The ring is dainty and adjustable which is a huge plus. Will be gifting this set.",
+    image: `${IMAGE_BASE}random7.png`,
   },
 ];
 

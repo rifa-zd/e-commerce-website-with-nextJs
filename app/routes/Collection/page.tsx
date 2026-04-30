@@ -1,7 +1,8 @@
 "use client";
-import { useAppContext } from "@/components/Context/appContext";
+
+import { useAppContext } from "@/context/AppContext";
 import Item from "@/components/fixPage/item";
-import { categories } from "@/data/data";
+import { categories } from "@/data/data"
 
 export default function Collection() {
   const { products } = useAppContext();

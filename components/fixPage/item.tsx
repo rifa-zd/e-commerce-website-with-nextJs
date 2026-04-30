@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { dummyProductType, useAppContext } from "../Context/appContext";
+import { dummyProductType, useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 
 import {
